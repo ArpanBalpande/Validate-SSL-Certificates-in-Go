@@ -2,6 +2,8 @@ package main
 
 import (
 	"crypto/tls"
+	"fmt"
+	"time"
 )
 
 func main() {
@@ -14,4 +16,6 @@ func main() {
 	if err != nil {
 		panic("Hostname doesn't match with certificate: " + err.Error())
 	}
+	expiry := conn.ConnectionState().PeerCertificates[0].NotAfter
+	fmt.Printf("Issuer: %s\nExpiry: %v\n", conn.ConnectionState().PeerCertificates[0].Issuer, expiry.Format(time.RFC850))
 }
