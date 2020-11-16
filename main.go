@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	conn, err := tls.Dial("tcp", "example.com:80", nil)
+	conn, err := tls.Dial("tcp", "freecodecamp.org:443", nil)
 	if err != nil {
 		panic("Server doesn't support SSL certificate err: " + err.Error())
 	}
